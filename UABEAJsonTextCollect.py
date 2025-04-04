@@ -58,8 +58,7 @@ def write(dir):
 				print("Error encountered when loading "+path)
 		if ("m_Text" in file):
 			if ("m_Text" in cont.keys()):
-				if (not os.path.exists(os.path.dirname(dir+"Repacked/"+path))):
-					os.makedirs(os.path.dirname(dir+"Repacked/"+path))
+				os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
 				with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
 					cont["m_Text"] = strings[file]
 					f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
@@ -67,8 +66,7 @@ def write(dir):
 				print(f"No m_Text was found in {path}")
 		elif ("lines" in file):
 			if ("lines" in cont.keys()):
-				if (not os.path.exists(os.path.dirname(dir+"Repacked/"+path))):
-					os.makedirs(os.path.dirname(dir+"Repacked/"+path))
+				os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
 				with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
 					cont["lines"]["Array"][int(file.split(":")[-1])] = strings[file]
 					f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
@@ -76,8 +74,7 @@ def write(dir):
 				print(f"No lines was found in {path}")
 		elif ("phrases" in file):
 			if ("phrases" in cont.keys()):
-				if (not os.path.exists(os.path.dirname(dir+"Repacked/"+path))):
-					os.makedirs(os.path.dirname(dir+"Repacked/"+path))
+				os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
 				with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
 					cont["phrases"]["Array"][int(file.split(":")[-1])] = strings[file]
 					f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
