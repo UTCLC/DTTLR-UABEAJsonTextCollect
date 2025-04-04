@@ -37,7 +37,7 @@ def find(dir):
 
 def output(dir):
 	with open(dir+"/strings.json", mode="w", encoding="utf-8") as f:
-		f.write(json.dumps(strings, sort_keys=True, indent=4, separators=(',', ': ')))
+		f.write(json.dumps(strings, indent=4, separators=(',', ': ')))
 
 def inputt(jsonf):
 	global strings
@@ -62,7 +62,7 @@ def write(dir):
 					os.makedirs(os.path.dirname(dir+"Repacked/"+path))
 				with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
 					cont["m_Text"] = strings[file]
-					f.write(json.dumps(cont, sort_keys=True, indent=2, separators=(',', ': ')))
+					f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
 			else:
 				print(f"No m_Text was found in {path}")
 		elif ("lines" in file):
@@ -71,7 +71,7 @@ def write(dir):
 					os.makedirs(os.path.dirname(dir+"Repacked/"+path))
 				with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
 					cont["lines"]["Array"][int(file.split(":")[-1])] = strings[file]
-					f.write(json.dumps(cont, sort_keys=True, indent=2, separators=(',', ': ')))
+					f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
 			else:
 				print(f"No lines was found in {path}")
 		elif ("phrases" in file):
@@ -80,7 +80,7 @@ def write(dir):
 					os.makedirs(os.path.dirname(dir+"Repacked/"+path))
 				with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
 					cont["phrases"]["Array"][int(file.split(":")[-1])] = strings[file]
-					f.write(json.dumps(cont, sort_keys=True, indent=2, separators=(',', ': ')))
+					f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
 			else:
 				print(f"No phrases was found in {path}")
 		else:
