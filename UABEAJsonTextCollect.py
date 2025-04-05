@@ -56,32 +56,32 @@ def write(dir):
 				cont = json.loads(f.read())
 			except:
 				print("Error encountered when loading "+path)
-		if ("m_Text" in file):
-			if ("m_Text" in cont.keys()):
-				os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
-				with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
-					cont["m_Text"] = strings[file]
-					f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
+			if ("m_Text" in file):
+				if ("m_Text" in cont.keys()):
+					os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
+					with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
+						cont["m_Text"] = strings[file]
+						f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
+				else:
+					print(f"No m_Text was found in {path}")
+			elif ("lines" in file):
+				if ("lines" in cont.keys()):
+					os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
+					with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
+						cont["lines"]["Array"][int(file.split(":")[-1])] = strings[file]
+						f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
+				else:
+					print(f"No lines was found in {path}")
+			elif ("phrases" in file):
+				if ("phrases" in cont.keys()):
+					os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
+					with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
+						cont["phrases"]["Array"][int(file.split(":")[-1])] = strings[file]
+						f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
+				else:
+					print(f"No phrases was found in {path}")
 			else:
-				print(f"No m_Text was found in {path}")
-		elif ("lines" in file):
-			if ("lines" in cont.keys()):
-				os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
-				with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
-					cont["lines"]["Array"][int(file.split(":")[-1])] = strings[file]
-					f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
-			else:
-				print(f"No lines was found in {path}")
-		elif ("phrases" in file):
-			if ("phrases" in cont.keys()):
-				os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
-				with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
-					cont["phrases"]["Array"][int(file.split(":")[-1])] = strings[file]
-					f.write(json.dumps(cont, indent=2, separators=(',', ': ')))
-			else:
-				print(f"No phrases was found in {path}")
-		else:
-			print(f"No m_Text/lines/phrases was found in {path}")
+				print(f"No m_Text/lines/phrases was found in {path}")
 
 strings = {}
 directory = input("Directory: ").replace("\\","/")
