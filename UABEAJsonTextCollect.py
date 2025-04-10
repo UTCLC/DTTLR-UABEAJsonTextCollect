@@ -32,7 +32,7 @@ def find(dir):
 						i += 1
 				else:
 					print(f"No m_Text/lines/phrases was found in {path}")
-		elif (os.path.isdir(path)):
+		elif (os.path.isdir(path) and not (path.rstrip("/").rstrip("\\").endswith("Repacked"))):
 			find(path)
 
 def output(dir):
