@@ -114,6 +114,9 @@ def write(dir):
 					print(f"No m_Text was found in {path}")
 			elif ("lines" in file):
 				if ("lines" in cont.keys()):
+					if (os.path.exists(dir+"Repacked/"+path)):
+						with (open(dir+"Repacked/"+path, mode="r", encoding="utf-8") as f):
+							cont = json.loads(f.read())
 					os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
 					with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
 						cont["lines"]["Array"][int(file.split(":")[-1])] = strings[file]
@@ -122,6 +125,9 @@ def write(dir):
 					print(f"No lines was found in {path}")
 			elif ("phrases" in file):
 				if ("phrases" in cont.keys()):
+					if (os.path.exists(dir+"Repacked/"+path)):
+						with (open(dir+"Repacked/"+path, mode="r", encoding="utf-8") as f):
+							cont = json.loads(f.read())
 					os.makedirs(os.path.dirname(dir+"Repacked/"+path),exist_ok=True)
 					with (open(dir+"Repacked/"+path, mode="w", encoding="utf-8") as f):
 						cont["phrases"]["Array"][int(file.split(":")[-1])] = strings[file]
